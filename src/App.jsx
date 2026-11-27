@@ -2,6 +2,7 @@
 import { useState } from "react";
 import "./App.css";
 import KimGame from "./KimGame";
+import Leitner from "./Leitner";
 
 const games = [
   {
@@ -39,15 +40,45 @@ const games = [
 function App() {
   const [dark, setDark] = useState(true);
   const [selected, setSelected] = useState(null);
-  const [activeGame, setActiveGame] = useState(false);
+  const [activeGame, setActiveGame] = useState(null);
 
-  if (activeGame) {
+  function openGame(gameNumber) {
+    if (gameNumber === "01") {
+      setSelected(null);
+      setActiveGame("kim");
+    } else if (gameNumber === "02") {
+      setSelected(null);
+      setActiveGame("leitner");
+    } else {
+      setSelected(gameNumber);
+    }
+  }
+
+  function closeGame() {
+    setActiveGame(null);
+  }
+
+  // KIM'S GAME
+
+  if (activeGame === "kim") {
     return (
       <main className={dark ? "app night" : "app day"}>
-        <KimGame onBack={() => setActiveGame(false)} />
+        <KimGame onBack={closeGame} />
       </main>
     );
   }
+
+  // LEITNER SYSTEM
+
+  if (activeGame === "leitner") {
+    return (
+      <main className={dark ? "app night" : "app day"}>
+        <Leitner onBack={closeGame} />
+      </main>
+    );
+  }
+
+  // MEMORA HOMEPAGE
 
   return (
     <main className={dark ? "app night" : "app day"}>
@@ -62,7 +93,9 @@ function App() {
       <header className="navbar">
         <a className="brand" href="#">
           <span className="brand-icon">✧</span>
-          <span>memora<span className="brand-dot">.</span></span>
+          <span>
+            memora<span className="brand-dot">.</span>
+          </span>
         </a>
 
         <nav className="nav-links">
@@ -99,7 +132,10 @@ function App() {
           <h1>
             Make room for
             <br />
-            <span className="hero-highlight">wonderful</span> memories.
+            <span className="hero-highlight">
+              wonderful
+            </span>{" "}
+            memories.
           </h1>
 
           <p className="hero-description">
@@ -120,14 +156,17 @@ function App() {
         <div className="hero-art">
           <div className="orbit orbit-one"></div>
           <div className="orbit orbit-two"></div>
+
           <div className="moon">
             <div className="moon-crater crater-one"></div>
             <div className="moon-crater crater-two"></div>
             <div className="moon-crater crater-three"></div>
           </div>
+
           <span className="orbit-star">✦</span>
           <span className="orbit-star second">✧</span>
           <span className="orbit-star third">·</span>
+
           <div className="art-caption">
             <span>01 — DISCOVER</span>
             <span>Your universe awaits</span>
@@ -138,44 +177,60 @@ function App() {
       <section className="training-section" id="training">
         <div className="section-heading">
           <div>
-            <span className="section-kicker">YOUR TRAINING SPACE</span>
+            <span className="section-kicker">
+              YOUR TRAINING SPACE
+            </span>
+
             <h2>Explore your memory.</h2>
-            <p>Three little ways to give your brain a workout.</p>
+
+            <p>
+              Three little ways to give your brain a workout.
+            </p>
           </div>
+
           <span className="section-decoration">✧</span>
         </div>
 
         <div className="game-grid">
           {games.map((game) => (
             <article
-              className={`game-card ${game.color} ${selected === game.number ? "selected" : ""
-                }`}
+              className={`game-card ${game.color} ${
+                selected === game.number ? "selected" : ""
+              }`}
               key={game.number}
             >
               <div className="card-top">
-                <span className="card-number">{game.number} / 03</span>
-                <span className="card-icon">{game.icon}</span>
+                <span className="card-number">
+                  {game.number} / 03
+                </span>
+
+                <span className="card-icon">
+                  {game.icon}
+                </span>
               </div>
 
               <div className="card-content">
                 <h3>{game.name}</h3>
-                <span className="card-subtitle">{game.subtitle}</span>
+
+                <span className="card-subtitle">
+                  {game.subtitle}
+                </span>
+
                 <p>{game.description}</p>
               </div>
 
               <div className="card-bottom">
-                <span className="duration">◷ {game.duration}</span>
+                <span className="duration">
+                  ◷ {game.duration}
+                </span>
+
                 <button
                   className="card-button"
-                  onClick={() => {
-                    if (game.number === "01") {
-                      setActiveGame(true);
-                    } else {
-                      setSelected(game.number);
-                    }
-                  }}
+                  onClick={() => openGame(game.number)}
                 >
-                  {selected === game.number ? "Selected ✓" : "Explore →"}
+                  {selected === game.number
+                    ? "Selected ✓"
+                    : "Explore →"}
                 </button>
               </div>
             </article>
@@ -184,8 +239,11 @@ function App() {
 
         {selected && (
           <div className="selection-message">
-            ✧ {games.find((game) => game.number === selected).name} selected.
-            Training activities are coming soon!
+            ✧{" "}
+            {games.find(
+              (game) => game.number === selected
+            ).name}{" "}
+            selected. Training activities are coming soon!
           </div>
         )}
       </section>
