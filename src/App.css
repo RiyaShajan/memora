@@ -16,21 +16,37 @@
   --accent: #c5b5ff;
   --border: rgba(207, 199, 255, 0.13);
   --card: #1b2440;
-  background: radial-gradient(ellipse at 78% 20%, #25274b 0%, transparent 40%),
-              linear-gradient(140deg, #101529, #171c35 65%, #22203f);
+
+  background:
+    radial-gradient(ellipse at 78% 20%, #25274b 0%, transparent 40%),
+    linear-gradient(140deg, #101529, #171c35 65%, #22203f);
+
   color: var(--text);
 }
 
+/* MORNING THEME */
 .day {
-  --bg: #edf7ec;
-  --surface: #ffffff;
-  --text: #29483a;
-  --muted: #718c7b;
-  --accent: #568b66;
-  --border: rgba(65, 111, 77, 0.16);
-  --card: #ffffff;
-  background: radial-gradient(ellipse at 80% 15%, #fff3c8 0%, transparent 38%),
-              linear-gradient(140deg, #eaf5e8, #dff0e4 60%, #d2e8da);
+  --bg: #fff8ed;
+  --surface: #fffdf8;
+  --text: #35483f;
+  --muted: #8b897e;
+  --accent: #d69b58;
+  --border: rgba(153, 119, 76, 0.18);
+  --card: #fffdf8;
+
+  background:
+    radial-gradient(
+      ellipse at 80% 15%,
+      #ffe6b8 0%,
+      transparent 40%
+    ),
+    linear-gradient(
+      140deg,
+      #fff8ed,
+      #fcebdc 60%,
+      #f5e2d0
+    );
+
   color: var(--text);
 }
 
@@ -52,7 +68,14 @@
 .star-four { top: 65%; right: 8%; font-size: 19px; }
 .star-five { top: 80%; left: 12%; font-size: 23px; }
 
-.day .star { color: #d6a94d; opacity: 0.55; }
+.day .star {
+  color: #d69b58;
+  opacity: 0.65;
+}
+
+.day .moon-crater {
+  background: rgba(196, 147, 55, 0.12);
+}
 
 .navbar {
   height: 90px;
@@ -74,11 +97,13 @@
   letter-spacing: -1px;
 }
 
-.brand-icon, .brand-dot {
+.brand-icon,
+.brand-dot {
   color: var(--accent);
 }
 
-.nav-links, .nav-actions {
+.nav-links,
+.nav-actions {
   display: flex;
   align-items: center;
   gap: 32px;
@@ -98,7 +123,8 @@
   gap: 13px;
 }
 
-.theme-toggle, .login-button {
+.theme-toggle,
+.login-button {
   border: 1px solid var(--border);
   border-radius: 30px;
   padding: 10px 15px;
@@ -108,7 +134,8 @@
   transition: var(--transition);
 }
 
-.theme-toggle:hover, .login-button:hover {
+.theme-toggle:hover,
+.login-button:hover {
   background: var(--surface);
   transform: translateY(-2px);
 }
@@ -134,7 +161,8 @@
   z-index: 1;
 }
 
-.eyebrow, .section-kicker {
+.eyebrow,
+.section-kicker {
   color: var(--accent);
   font-size: 10px;
   letter-spacing: 2.5px;
@@ -209,16 +237,25 @@
   aspect-ratio: 1;
   border-radius: 50%;
   background: linear-gradient(145deg, #e7ddff, #a99bd7 70%);
-  box-shadow: 0 0 45px rgba(178, 163, 241, 0.28),
-              inset -22px -16px 35px rgba(86, 77, 145, 0.2);
+  box-shadow:
+    0 0 45px rgba(178, 163, 241, 0.28),
+    inset -22px -16px 35px rgba(86, 77, 145, 0.2);
   position: relative;
   z-index: 1;
   animation: float 5s ease-in-out infinite;
 }
 
 .day .moon {
-  background: radial-gradient(circle at 35% 30%, #fff9d7, #f3d786 70%);
-  box-shadow: 0 0 65px rgba(241, 201, 103, 0.45);
+  background: radial-gradient(
+    circle at 35% 30%,
+    #fff8d9,
+    #ffd98c 65%,
+    #f5bd70
+  );
+
+  box-shadow:
+    0 0 65px rgba(255, 190, 100, 0.4),
+    0 0 120px rgba(255, 215, 150, 0.2);
 }
 
 .moon-crater {
@@ -344,7 +381,8 @@
   box-shadow: 0 0 0 2px var(--border);
 }
 
-.card-top, .card-bottom {
+.card-top,
+.card-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -429,7 +467,8 @@ footer {
   .brand { font-size: 25px; }
   .nav-links { display: none; }
   .nav-actions { gap: 7px; }
-  .theme-toggle, .login-button { padding: 9px 11px; }
+  .theme-toggle,
+  .login-button { padding: 9px 11px; }
   .toggle-label { display: none; }
 
   .hero {
@@ -455,7 +494,9 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;

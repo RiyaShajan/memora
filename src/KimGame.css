@@ -1,0 +1,383 @@
+
+.kim-game {
+  min-height: 100vh;
+  padding: 25px 0 65px;
+  position: relative;
+  z-index: 1;
+}
+
+.kim-back {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: transparent;
+  border-radius: 25px;
+  padding: 11px 17px;
+  font-size: 12px;
+}
+
+.kim-heading {
+  text-align: center;
+  padding: 50px 0 30px;
+}
+
+.kim-eyebrow {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.kim-heading h1,
+.kim-panel h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(35px, 5vw, 48px);
+  margin: 12px 0;
+}
+
+.kim-heading p,
+.kim-panel > p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.kim-panel {
+  width: min(100%, 620px);
+  margin: 20px auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 40px;
+  text-align: center;
+}
+
+.kim-symbol {
+  color: var(--accent);
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.kim-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 35px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+}
+
+.kim-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kim-stats strong {
+  font-size: 23px;
+  color: var(--accent);
+}
+
+.kim-stats span {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.kim-primary {
+  background: var(--accent);
+  color: #17172a;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 25px;
+  font-weight: 700;
+  font-size: 12px;
+  transition: transform 0.2s;
+  margin-top: 15px;
+}
+
+.kim-primary:hover:not(:disabled) {
+  transform: translateY(-3px);
+}
+
+.kim-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.kim-timer {
+  width: min(100%, 430px);
+  margin: 0 auto 25px;
+  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 17px;
+}
+
+.kim-timer span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.kim-timer strong {
+  display: block;
+  font-size: 30px;
+  color: var(--accent);
+  margin: 8px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.kim-progress {
+  height: 5px;
+  background: var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.kim-progress div {
+  height: 100%;
+  background: var(--accent);
+  transition: width 1s linear;
+}
+
+.kim-instruction {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 22px;
+}
+
+.object-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.object-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 13px;
+}
+
+.object-card img {
+  display: block;
+  width: 100%;
+  height: 125px;
+  object-fit: cover;
+  background: var(--surface);
+}
+
+.object-card span {
+  display: block;
+  color: var(--text);
+  font-size: 11px;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.recall-panel {
+  text-align: left;
+}
+
+.recall-panel .kim-symbol,
+.recall-panel h2,
+.recall-panel > p {
+  text-align: center;
+}
+
+.recall-panel label {
+  display: block;
+  font-size: 12px;
+  margin: 25px 0 10px;
+  color: var(--text);
+}
+
+.recall-panel textarea {
+  width: 100%;
+  resize: vertical;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 15px;
+  outline: none;
+  font: inherit;
+  font-size: 13px;
+}
+
+.recall-panel textarea:focus {
+  border-color: var(--accent);
+}
+
+.kim-hint {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 9px;
+}
+
+.recall-panel .kim-primary,
+.result-panel .kim-primary {
+  display: block;
+  margin: 25px auto 0;
+}
+
+.score-circle {
+  width: 145px;
+  height: 145px;
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  margin: 25px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.score-circle strong {
+  color: var(--accent);
+  font-size: 36px;
+}
+
+.score-circle span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.result-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  text-align: left;
+  margin: 25px 0;
+}
+
+.result-columns > div {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.result-columns h3 {
+  font-size: 11px;
+  margin-bottom: 12px;
+}
+
+.result-item {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  padding: 5px 0;
+}
+
+.kim-secondary {
+  display: block;
+  margin: 12px auto 0;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  padding: 11px 20px;
+  font-size: 11px;
+}
+
+@media (max-width: 650px) {
+  .kim-game { padding-top: 15px; }
+  .kim-heading { padding: 35px 0 20px; }
+  .kim-panel { padding: 25px 18px; }
+  .object-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+  .object-card img { height: 105px; }
+  .object-card span { font-size: 10px; }
+  .result-columns { grid-template-columns: 1fr; }
+}
+
+/* ---- Phase 1 additions ---- */
+
+.kim-levels {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 24px 0 0;
+}
+
+.kim-level {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 25px;
+  padding: 9px 18px;
+  font-size: 12px;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.kim-level:hover,
+.kim-level:focus-visible {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.kim-level.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #17172a;
+  font-weight: 700;
+}
+
+.kim-pulse {
+  animation: kim-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes kim-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.92); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+/* Shown when a photo is missing or fails to load */
+.object-fallback {
+  height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 46px;
+  background: var(--surface);
+}
+
+.kim-progress div {
+  transition: width 0.2s linear;
+}
+
+.kim-skip {
+  margin-top: 28px;
+}
+
+.kim-extras {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.kim-primary:focus-visible,
+.kim-secondary:focus-visible,
+.kim-back:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 650px) {
+  .object-fallback { height: 84px; font-size: 34px; }
+  .object-card img { height: 84px; }
+  .kim-levels { gap: 6px; }
+  .kim-level { padding: 9px 14px; }
+  .kim-timer { padding: 12px; margin-bottom: 16px; }
+  .kim-timer strong { font-size: 26px; margin: 5px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kim-pulse { animation: none; }
+}

@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import "./App.css";
+import KimGame from "./KimGame";
 
 const games = [
   {
@@ -38,6 +39,15 @@ const games = [
 function App() {
   const [dark, setDark] = useState(true);
   const [selected, setSelected] = useState(null);
+  const [activeGame, setActiveGame] = useState(false);
+
+  if (activeGame) {
+    return (
+      <main className={dark ? "app night" : "app day"}>
+        <KimGame onBack={() => setActiveGame(false)} />
+      </main>
+    );
+  }
 
   return (
     <main className={dark ? "app night" : "app day"}>
@@ -138,9 +148,8 @@ function App() {
         <div className="game-grid">
           {games.map((game) => (
             <article
-              className={`game-card ${game.color} ${
-                selected === game.number ? "selected" : ""
-              }`}
+              className={`game-card ${game.color} ${selected === game.number ? "selected" : ""
+                }`}
               key={game.number}
             >
               <div className="card-top">
@@ -158,9 +167,13 @@ function App() {
                 <span className="duration">◷ {game.duration}</span>
                 <button
                   className="card-button"
-                  onClick={() => setSelected(
-                    selected === game.number ? null : game.number
-                  )}
+                  onClick={() => {
+                    if (game.number === "01") {
+                      setActiveGame(true);
+                    } else {
+                      setSelected(game.number);
+                    }
+                  }}
                 >
                   {selected === game.number ? "Selected ✓" : "Explore →"}
                 </button>
