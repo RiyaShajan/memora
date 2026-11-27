@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import KimGame from "./KimGame";
 import Leitner from "./Leitner";
+import Blurting from "./Blurting";
 
 const games = [
   {
@@ -43,17 +44,16 @@ function App() {
   const [activeGame, setActiveGame] = useState(null);
 
   function openGame(gameNumber) {
+    setSelected(null);
+
     if (gameNumber === "01") {
-      setSelected(null);
       setActiveGame("kim");
     } else if (gameNumber === "02") {
-      setSelected(null);
       setActiveGame("leitner");
-    } else {
-      setSelected(gameNumber);
+    } else if (gameNumber === "03") {
+      setActiveGame("blurting");
     }
   }
-
   function closeGame() {
     setActiveGame(null);
   }
@@ -77,6 +77,41 @@ function App() {
       </main>
     );
   }
+  // BLURTING METHOD
+
+  function closeGame() {
+  setActiveGame(null);
+}
+
+// KIM'S GAME
+
+if (activeGame === "kim") {
+  return (
+    <main className={dark ? "app night" : "app day"}>
+      <KimGame onBack={closeGame} />
+    </main>
+  );
+}
+
+// LEITNER SYSTEM
+
+if (activeGame === "leitner") {
+  return (
+    <main className={dark ? "app night" : "app day"}>
+      <Leitner onBack={closeGame} />
+    </main>
+  );
+}
+
+// BLURTING METHOD
+
+if (activeGame === "blurting") {
+  return (
+    <main className={dark ? "app night" : "app day"}>
+      <Blurting onBack={closeGame} />
+    </main>
+  );
+}
 
   // MEMORA HOMEPAGE
 
@@ -194,9 +229,8 @@ function App() {
         <div className="game-grid">
           {games.map((game) => (
             <article
-              className={`game-card ${game.color} ${
-                selected === game.number ? "selected" : ""
-              }`}
+              className={`game-card ${game.color} ${selected === game.number ? "selected" : ""
+                }`}
               key={game.number}
             >
               <div className="card-top">
