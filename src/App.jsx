@@ -40,12 +40,9 @@ const games = [
 
 function App() {
   const [dark, setDark] = useState(true);
-  const [selected, setSelected] = useState(null);
   const [activeGame, setActiveGame] = useState(null);
 
   function openGame(gameNumber) {
-    setSelected(null);
-
     if (gameNumber === "01") {
       setActiveGame("kim");
     } else if (gameNumber === "02") {
@@ -79,33 +76,7 @@ function App() {
   }
   // BLURTING METHOD
 
-  function closeGame() {
-  setActiveGame(null);
-}
-
-// KIM'S GAME
-
-if (activeGame === "kim") {
-  return (
-    <main className={dark ? "app night" : "app day"}>
-      <KimGame onBack={closeGame} />
-    </main>
-  );
-}
-
-// LEITNER SYSTEM
-
-if (activeGame === "leitner") {
-  return (
-    <main className={dark ? "app night" : "app day"}>
-      <Leitner onBack={closeGame} />
-    </main>
-  );
-}
-
-// BLURTING METHOD
-
-if (activeGame === "blurting") {
+  if (activeGame === "blurting") {
   return (
     <main className={dark ? "app night" : "app day"}>
       <Blurting onBack={closeGame} />
@@ -229,8 +200,7 @@ if (activeGame === "blurting") {
         <div className="game-grid">
           {games.map((game) => (
             <article
-              className={`game-card ${game.color} ${selected === game.number ? "selected" : ""
-                }`}
+              className={`game-card ${game.color}`}
               key={game.number}
             >
               <div className="card-top">
@@ -262,24 +232,13 @@ if (activeGame === "blurting") {
                   className="card-button"
                   onClick={() => openGame(game.number)}
                 >
-                  {selected === game.number
-                    ? "Selected ✓"
-                    : "Explore →"}
+                  Explore →
                 </button>
               </div>
             </article>
           ))}
         </div>
 
-        {selected && (
-          <div className="selection-message">
-            ✧{" "}
-            {games.find(
-              (game) => game.number === selected
-            ).name}{" "}
-            selected. Training activities are coming soon!
-          </div>
-        )}
       </section>
 
       <footer id="about">

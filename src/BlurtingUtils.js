@@ -16,7 +16,15 @@ export const TIMER_OPTIONS = [
 // Generate unique IDs
 
 export function createId() {
-  return crypto.randomUUID();
+  // crypto.randomUUID only exists on HTTPS/localhost, so fall back
+  // when testing over a plain-HTTP LAN address on a phone.
+  if (typeof crypto !== "undefined" && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+
+  return `${Date.now().toString(36)}-${Math.random()
+    .toString(36)
+    .slice(2, 10)}`;
 }
 
 // Load saved topics and sessions

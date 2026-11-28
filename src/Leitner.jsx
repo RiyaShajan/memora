@@ -57,6 +57,13 @@ export default function Leitner({ onBack }) {
     (card) => card.id === reviewQueue[reviewIndex]
   );
 
+  // The edit forms sit above the lists, so bring them into view.
+  function scrollToForm(id) {
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
   // DECK MANAGEMENT
 
   function resetDeckForm() {
@@ -95,6 +102,7 @@ export default function Leitner({ onBack }) {
     setEditingDeck(deck.id);
     setDeckName(deck.name);
     setSubject(deck.subject);
+    scrollToForm("leitner-deck-form");
   }
 
   function handleDeleteDeck(id) {
@@ -148,8 +156,6 @@ export default function Leitner({ onBack }) {
                   ...card,
                   question: question.trim(),
                   answer: answer.trim(),
-                  box: 1,
-                  dueDate: Date.now(),
                 }
               : card
           )
@@ -166,6 +172,7 @@ export default function Leitner({ onBack }) {
     setEditingCard(card.id);
     setQuestion(card.question);
     setAnswer(card.answer);
+    scrollToForm("leitner-card-form");
   }
 
   function handleDeleteCard(id) {
@@ -359,6 +366,7 @@ export default function Leitner({ onBack }) {
             </h2>
 
             <form
+              id="leitner-deck-form"
               className="leitner-form"
               onSubmit={handleSaveDeck}
             >
@@ -507,12 +515,16 @@ export default function Leitner({ onBack }) {
             </h2>
 
             <form
+              id="leitner-card-form"
               className="leitner-form leitner-card-form"
               onSubmit={handleSaveCard}
             >
-              <label>Question or concept</label>
+              <label htmlFor="leitner-question">
+                Question or concept
+              </label>
 
               <textarea
+                id="leitner-question"
                 placeholder="What do you want to remember?"
                 value={question}
                 onChange={(e) =>
@@ -521,9 +533,10 @@ export default function Leitner({ onBack }) {
                 required
               />
 
-              <label>Answer</label>
+              <label htmlFor="leitner-answer">Answer</label>
 
               <textarea
+                id="leitner-answer"
                 placeholder="Write the answer here..."
                 value={answer}
                 onChange={(e) =>
